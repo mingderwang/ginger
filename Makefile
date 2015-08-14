@@ -6,6 +6,7 @@ all: main.go
 
 clean:
 	@go clean
+	rm -f slack.go
 
 test:
 	@go test

@@ -5,8 +5,6 @@
 package main
 
 import (
-	"fmt"
-	"io"
 	"os"
 	"text/template"
 
@@ -105,13 +103,6 @@ func checkError(err error, message string) {
 	}
 }
 
-func createFile(outputPath string) io.Writer {
-	output, err := os.OpenFile(outputPath, os.O_WRONLY|os.O_CREATE, 0600)
-	defer output.Close()
-	checkError(err, "could not open output file")
-	return output
-}
-
 func findTypes() []GenType {
 	var types []GenType
 	item := GenType{"Slack", "slack"}
@@ -121,7 +112,8 @@ func findTypes() []GenType {
 
 func main() {
 	types := findTypes()
-	output := createFile("slack.go")
-	fmt.Println(types)
-	gingerTemplate.Execute(output, types)
+	output, err := os.OpenFile("slack.go", os.O_WRONLY|os.O_CREATE, 0600)
+	defer output.Close()
+	checkError(err, "could not open output file")
+	gingerTemplate.Execute(output, AllType{types})
 }
