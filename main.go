@@ -6,6 +6,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"os"
 	"text/template"
 
@@ -97,16 +98,30 @@ func init() {
 	log.SetLevel(log.WarnLevel)
 }
 
-func checkError(err error) {
-	if err == nil {
-		log.WithFields(log.Fields{
-			"file": "main.go",
-		}).Fatal("test")
+func checkError(err error, message string) {
+	if err != nil {
+		log.Fatal(message)
 		panic(err)
 	}
 }
 
+func createFile(outputPath string) io.Writer {
+	output, err := os.OpenFile(outputPath, os.O_WRONLY|os.O_CREATE, 0600)
+	defer output.Close()
+	checkError(err, "could not open output file")
+	return output
+}
+
+func findTypes() []GenType {
+	var types []GenType
+	item := GenType{"Slack", "slack"}
+	types = append(types, item)
+	return types
+}
+
 func main() {
-	checkError(nil)
-	fmt.Println()
+	types := findTypes()
+	output := createFile("slack.go")
+	fmt.Println(types)
+	gingerTemplate.Execute(output, types)
 }
