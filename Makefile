@@ -2,7 +2,7 @@
 
 all: main.go
 	go build
-	./go-template
+	./ginger
 
 clean:
 	@go clean
