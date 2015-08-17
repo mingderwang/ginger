@@ -88,7 +88,6 @@ func (s *{{.TypeName}}Service) Run(cfg Config) error {
 	return nil
 }
 {{end}}
-)
 `))
 )
 
