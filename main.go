@@ -36,6 +36,7 @@ func main() {
 		types = parse.Scan("", fileName)
 		for _, typeName := range types {
 			gen.GenWebService(typeName)
+			gen.GenResourceFile(typeName)
 		}
 	}
 }
