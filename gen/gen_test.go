@@ -5,5 +5,5 @@ import (
 )
 
 func TestGen(t *testing.T) {
-	genWebService("Slack")
+	GenResourceFile("Slack")
 }
