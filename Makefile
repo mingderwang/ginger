@@ -6,8 +6,7 @@ all: main.go
 
 clean:
 	@go clean
-	rm -f slack.go
-	rm -f web_service.go
+	rm -f gen/web_service.go
 
 test:
 	@go test

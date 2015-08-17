@@ -1,4 +1,4 @@
-package ginger
+package gen
 
 import (
 	"testing"

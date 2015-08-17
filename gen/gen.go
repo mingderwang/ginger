@@ -2,7 +2,7 @@
  * Copyright 2015 Ming-der Wang<ming@log4analytics.com> All right reserved.
  * Licensed by MIT License
  */
-package ginger
+package gen
 
 import (
 	//"fmt"
@@ -130,7 +130,7 @@ func findTypes(name string) []GenType {
 	return types
 }
 
-func genWebService(path string) {
+func GenWebService(path string) {
 	types := findTypes(path)
 	output, err := os.OpenFile("web_service.go", os.O_WRONLY|os.O_CREATE, 0600)
 	defer output.Close()
