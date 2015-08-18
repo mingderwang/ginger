@@ -57,7 +57,7 @@ func (tr *{{.TypeName}}Resource) Create{{.TypeName}}(c *gin.Context) {
 func (tr *{{.TypeName}}Resource) GetAll{{.TypeName}}s(c *gin.Context) {
 	var {{.VariableName}}s []{{.TypeName}}
 
-	tr.db.Order("created desc").Find(&{{.VariableName}}s)
+	tr.db.Order("ginger__created desc").Find(&{{.VariableName}}s)
 
 	c.JSON(http.StatusOK, {{.VariableName}}s)
 }

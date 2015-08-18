@@ -11,7 +11,7 @@ You can generate following data type from JSON-to-Go online tool with a sample o
 Ginger will generate main.go for you, only need a dataType.go in the current folder. 
 
 Please add following 2 lines in your data schema
-    Ginger_Created    int32  `json:"gigner_created,omitempty"`
+    Ginger_Created    int32  `json:"ginger_created,omitempty"`
     Ginger_Id         int32  `json:"ginger_id,omitempty"`
 
 For example, User Schema
@@ -20,8 +20,8 @@ For example, User Schema
 package main
 //@ginger
 type User struct {
-    Ginger_Created    int32  `json:"gigner_created,omitempty"`
-    Ginger_Id         int32  `json:"ginger_id,omitempty"`
+    Ginger_Created    int32  `json:"ginger_created,omitempty"`
+    Ginger_Id         int32  `json:"ginger_id,omitempty" gorm:"primary_key"`
 	ID string `json:"id"`
 	Name string `json:"name"`
 	Deleted bool `json:"deleted"`
