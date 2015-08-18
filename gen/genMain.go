@@ -67,7 +67,7 @@ func main() {
 
 	app.Flags = []cli.Flag{
 		//	cli.StringFlag{"host", "http://localhost:8080", "use sevice host", "APP_HOST"},
-		cli.StringFlag{"config, c", "config/config.yml", "config file to use", "APP_CONFIG"},
+		cli.StringFlag{"config, c", "config.yaml", "config file to use", "APP_CONFIG"},
 	}
 
 	app.Commands = []cli.Command{
