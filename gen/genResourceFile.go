@@ -46,7 +46,7 @@ func (tr *{{.TypeName}}Resource) Create{{.TypeName}}(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "problem decoding body"})
 		return
 	}
-	{{.VariableName}}.Status = {{.TypeName}}Status
+	//{{.VariableName}}.Status = {{.TypeName}}Status
 	{{.VariableName}}.Created = int32(time.Now().Unix())
 
 	tr.db.Save(&{{.VariableName}})
