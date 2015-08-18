@@ -20,8 +20,8 @@ For example, User Schema
 package main
 //@ginger
 type User struct {
-    Ginger_Created    int32  `json:"ginger_created,omitempty"`
-    Ginger_Id         int32  `json:"ginger_id,omitempty" gorm:"primary_key"`
+    Ginger_Created    int32  `json:"ginger_created"`
+    Ginger_Id         int32  `json:"ginger_id" gorm:"primary_key"`
 	ID string `json:"id"`
 	Name string `json:"name"`
 	Deleted bool `json:"deleted"`
@@ -52,4 +52,5 @@ type User struct {
 }
 ```
 
-
+#Demo
+refer to github.com/mingderwang/goslack
