@@ -47,7 +47,7 @@ func (tr *{{.TypeName}}Resource) Create{{.TypeName}}(c *gin.Context) {
 		return
 	}
 	//{{.VariableName}}.Status = {{.TypeName}}Status
-	{{.VariableName}}.Created = int32(time.Now().Unix())
+	{{.VariableName}}.Ginger_Created = int32(time.Now().Unix())
 
 	tr.db.Save(&{{.VariableName}})
 
@@ -91,7 +91,7 @@ func (tr *{{.TypeName}}Resource) Update{{.TypeName}}(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "problem decoding body"})
 		return
 	}
-	{{.VariableName}}.Id = int32(id)
+	{{.VariableName}}.Ginger_Id = int32(id)
 
 	var existing {{.TypeName}}
 
