@@ -38,28 +38,28 @@ type {{.TypeName}}Resource struct {
 // @Param   some_id     path    int     true        "Some ID"
 // @Success 201 {object} string
 // @Failure 400 {object} APIError "problem decoding body"
-// @Router /_log4analytics_/ [post]
+// @Router /{{.VariableName}}/ [post]
 func (tr *{{.TypeName}}Resource) Create{{.TypeName}}(c *gin.Context) {
-	var _log4analytics_ {{.TypeName}}
+	var {{.VariableName}} {{.TypeName}}
 
-	if c.Bind(&_log4analytics_) != nil {
+	if c.Bind(&{{.VariableName}}) != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "problem decoding body"})
 		return
 	}
-	_log4analytics_.Status = {{.TypeName}}Status
-	_log4analytics_.Created = int32(time.Now().Unix())
+	{{.VariableName}}.Status = {{.TypeName}}Status
+	{{.VariableName}}.Created = int32(time.Now().Unix())
 
-	tr.db.Save(&_log4analytics_)
+	tr.db.Save(&{{.VariableName}})
 
-	c.JSON(http.StatusCreated, _log4analytics_)
+	c.JSON(http.StatusCreated, {{.VariableName}})
 }
 
 func (tr *{{.TypeName}}Resource) GetAll{{.TypeName}}s(c *gin.Context) {
-	var _log4analytics_s []{{.TypeName}}
+	var {{.VariableName}}s []{{.TypeName}}
 
-	tr.db.Order("created desc").Find(&_log4analytics_s)
+	tr.db.Order("created desc").Find(&{{.VariableName}}s)
 
-	c.JSON(http.StatusOK, _log4analytics_s)
+	c.JSON(http.StatusOK, {{.VariableName}}s)
 }
 
 func (tr *{{.TypeName}}Resource) Get{{.TypeName}}(c *gin.Context) {
@@ -69,12 +69,12 @@ func (tr *{{.TypeName}}Resource) Get{{.TypeName}}(c *gin.Context) {
 		return
 	}
 
-	var _log4analytics_ {{.TypeName}}
+	var {{.VariableName}} {{.TypeName}}
 
-	if tr.db.First(&_log4analytics_, id).RecordNotFound() {
+	if tr.db.First(&{{.VariableName}}, id).RecordNotFound() {
 		c.JSON(http.StatusNotFound, gin.H{"message": "not found"})
 	} else {
-		c.JSON(http.StatusOK, _log4analytics_)
+		c.JSON(http.StatusOK, {{.VariableName}})
 	}
 }
 
@@ -85,21 +85,21 @@ func (tr *{{.TypeName}}Resource) Update{{.TypeName}}(c *gin.Context) {
 		return
 	}
 
-	var _log4analytics_ {{.TypeName}}
+	var {{.VariableName}} {{.TypeName}}
 
-	if c.Bind(&_log4analytics_) != nil {
+	if c.Bind(&{{.VariableName}}) != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "problem decoding body"})
 		return
 	}
-	_log4analytics_.Id = int32(id)
+	{{.VariableName}}.Id = int32(id)
 
 	var existing {{.TypeName}}
 
 	if tr.db.First(&existing, id).RecordNotFound() {
 		c.JSON(http.StatusNotFound, gin.H{"message": "not found"})
 	} else {
-		tr.db.Save(&_log4analytics_)
-		c.JSON(http.StatusOK, _log4analytics_)
+		tr.db.Save(&{{.VariableName}})
+		c.JSON(http.StatusOK, {{.VariableName}})
 	}
 
 }
@@ -123,15 +123,15 @@ func (tr *{{.TypeName}}Resource) Patch{{.TypeName}}(c *gin.Context) {
 			c.JSON(http.StatusBadRequest, gin.H{"message": "PATCH support is limited and can only replace the /status path"})
 			return
 		}
-		var _log4analytics_ {{.TypeName}}
+		var {{.VariableName}} {{.TypeName}}
 
-		if tr.db.First(&_log4analytics_, id).RecordNotFound() {
+		if tr.db.First(&{{.VariableName}}, id).RecordNotFound() {
 			c.JSON(http.StatusNotFound, gin.H{"message": "not found"})
 		} else {
-			_log4analytics_.Status = json[0].Value
+			{{.VariableName}}.Status = json[0].Value
 
-			tr.db.Save(&_log4analytics_)
-			c.JSON(http.StatusOK, _log4analytics_)
+			tr.db.Save(&{{.VariableName}})
+			c.JSON(http.StatusOK, {{.VariableName}})
 		}
 	}
 }
@@ -143,12 +143,12 @@ func (tr *{{.TypeName}}Resource) Delete{{.TypeName}}(c *gin.Context) {
 		return
 	}
 
-	var _log4analytics_ {{.TypeName}}
+	var {{.VariableName}} {{.TypeName}}
 
-	if tr.db.First(&_log4analytics_, id).RecordNotFound() {
+	if tr.db.First(&{{.VariableName}}, id).RecordNotFound() {
 		c.JSON(http.StatusNotFound, gin.H{"message": "not found"})
 	} else {
-		tr.db.Delete(&_log4analytics_)
+		tr.db.Delete(&{{.VariableName}})
 		c.Data(http.StatusNoContent, "application/json", make([]byte, 0))
 	}
 }
