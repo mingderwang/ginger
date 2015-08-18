@@ -37,6 +37,7 @@ func main() {
 		for _, typeName := range types {
 			gen.GenWebService(typeName)
 			gen.GenResourceFile(typeName)
+			gen.GenMain(typeName)
 		}
 	}
 }
