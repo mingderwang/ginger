@@ -128,7 +128,7 @@ func (tr *{{.TypeName}}Resource) Patch{{.TypeName}}(c *gin.Context) {
 		if tr.db.First(&{{.VariableName}}, id).RecordNotFound() {
 			c.JSON(http.StatusNotFound, gin.H{"message": "not found"})
 		} else {
-			{{.VariableName}}.Status = json[0].Value
+			//{{.VariableName}}.Status = json[0].Value
 
 			tr.db.Save(&{{.VariableName}})
 			c.JSON(http.StatusOK, {{.VariableName}})
