@@ -18,7 +18,6 @@ var (
 .PHONY: all clean
 
 all: onion.go 
-	@go generate
 	@go build
 	./onion migratedb
 	./onion serve
