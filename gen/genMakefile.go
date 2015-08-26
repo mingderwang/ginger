@@ -14,7 +14,7 @@ import (
 
 var (
 	gingerTemplateMakefile = template.Must(template.New("ginger").Parse(
-`{{range .Types}}
+		`{{range .Types}}
 .PHONY: all clean
 
 all: onion.go 
@@ -26,6 +26,7 @@ clean:
 	rm -f *_resource.go
 	rm -f main.go
 	rm -f web_service.go
+	rm -f config.yaml
 
 cleandb:
 	rm -r *.db
