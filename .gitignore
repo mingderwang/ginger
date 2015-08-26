@@ -5,3 +5,4 @@ gen/main.go
 gen/web_service.go
 gen/config.yaml
 gen/slack_resource.go
+gen/Makefile
