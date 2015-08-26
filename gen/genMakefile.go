@@ -20,6 +20,8 @@ var (
 all: onion.go 
 	@go generate
 	@go build
+	./onion migratedb
+	./onion serve
 
 clean:
 	@go clean
@@ -27,6 +29,7 @@ clean:
 	rm -f main.go
 	rm -f web_service.go
 	rm -f config.yaml
+	rm -f Makefile
 
 cleandb:
 	rm -r *.db
