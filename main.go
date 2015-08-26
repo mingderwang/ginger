@@ -38,7 +38,7 @@ func main() {
 			gen.GenWebService(typeName)
 			gen.GenResourceFile(typeName)
 			gen.GenMain(typeName)
-			gen.GenConfigYaml(typeName)
+			gen.GenConfig(typeName)
 		}
 	}
 }
