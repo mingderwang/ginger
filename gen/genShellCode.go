@@ -21,12 +21,11 @@ export FILE='./Makefile'
 if [ -f $FILE ]
 then
        echo "File $FILE exist."
-       make clean
 else
        echo "File $FILE does not exist."
+       go generate
 fi
 echo "start dockerizing ..."
-go generate
 go build
 godep save -r
 docker build -t mingderwang/onion .
