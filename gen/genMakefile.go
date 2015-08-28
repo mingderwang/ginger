@@ -31,6 +31,7 @@ clean:
 	rm -f Makefile
 	rm -f Dockerfile
 	rm -f dockerize.sh
+	rm -f -r Godeps
 
 cleandb:
 	rm -r *.db

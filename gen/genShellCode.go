@@ -21,6 +21,20 @@ echo "start dockerizing ..."
 go generate
 go build
 godep save -r
+export FILE='./Makefile'
+if [ -f $FILE ]
+       echo "File $FILE does not exist."
+       make clean
+   else
+       echo "File $FILE does not exist."
+fi
+echo "start dockerizing ..."
+go generate
+go build
+godep save -r
+docker build -t mingderwang/onion .
+docker run -it -v $(pwd):/gopath/src/onion mingderwang/onion onion migratedb
+docker run -d --rm -p 8080:8080 -v $(pwd):/gopath/src/onion mingderwang/onion onion serve
 {{end}}
 `))
 )
