@@ -6,3 +6,5 @@ gen/web_service.go
 gen/config.yaml
 gen/slack_resource.go
 gen/Makefile
+gen/Dockerfile
+gen/dockerize.sh
