@@ -29,8 +29,8 @@ echo "start dockerizing ..."
 go build
 godep save -r
 docker build -t mingderwang/onion .
-docker run -it -v $(pwd):/gopath/src/onion mingderwang/onion onion migratedb
-docker run -d --rm -p 8080:8080 -v $(pwd):/gopath/src/onion mingderwang/onion onion serve
+docker run -i -t -v $(pwd):/gopath/src/onion mingderwang/onion onion migratedb
+docker run -d -p 8080:8080 -v $(pwd):/gopath/src/onion mingderwang/onion onion serve
 `))
 )
 
