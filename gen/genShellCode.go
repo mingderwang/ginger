@@ -19,9 +19,10 @@ set -o xtrace
 echo "start dockerizing ..."
 export FILE='./Makefile'
 if [ -f $FILE ]
-       echo "File $FILE does not exist."
+then
+       echo "File $FILE exist."
        make clean
-   else
+else
        echo "File $FILE does not exist."
 fi
 echo "start dockerizing ..."
