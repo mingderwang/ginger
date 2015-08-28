@@ -29,6 +29,8 @@ clean:
 	rm -f web_service.go
 	rm -f config.yaml
 	rm -f Makefile
+	rm -f Dockerfile
+	rm -f dockerize.sh
 
 cleandb:
 	rm -r *.db
