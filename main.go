@@ -40,6 +40,7 @@ func main() {
 			gen.GenMain(typeName)
 			gen.GenConfig(typeName)
 			gen.GenMakefile(typeName)
+			gen.GenDockerfile(typeName)
 		}
 	}
 }
