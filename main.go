@@ -38,10 +38,10 @@ func main() {
 			gen.GenWebService(typeName)
 			gen.GenResourceFile(typeName)
 			gen.GenMain(typeName)
-			gen.GenConfig(typeName)
-			gen.GenMakefile(typeName)
-			gen.GenDockerfile(typeName)
-			gen.GenShellCode(typeName)
+			//			gen.GenConfig(typeName)
+			//			gen.GenMakefile(typeName)
+			//			gen.GenDockerfile(typeName)
+			//			gen.GenShellCode(typeName)
 		}
 	}
 }
