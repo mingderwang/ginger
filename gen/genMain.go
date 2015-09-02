@@ -22,7 +22,6 @@ var (
 package main
 
 import (
-	"errors"
 	"io/ioutil"
 	"os"
 
@@ -36,7 +35,16 @@ func getConfig(c *cli.Context) (Config, error) {
 	config := Config{}
 
 	if _, err := os.Stat(yamlPath); err != nil {
-		return config, errors.New("config path not valid")
+		config = Config{
+			":8080",
+			"root",
+			"",
+			"localhost",
+			"Onion.db",
+			"",
+			"",
+		}
+		return config, nil
 	}
 
 	ymlData, err := ioutil.ReadFile(yamlPath)
