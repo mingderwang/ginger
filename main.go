@@ -41,7 +41,7 @@ func main() {
 			//			gen.GenConfig(typeName)
 			gen.GenMakefile(typeName)
 			gen.GenDockerfile(typeName)
-			//			gen.GenShellCode(typeName)
+			gen.GenShellCode(typeName)
 		}
 	}
 }
