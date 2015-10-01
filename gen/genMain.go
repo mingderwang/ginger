@@ -40,7 +40,7 @@ func getConfig(c *cli.Context) (Config, error) {
 			"root",
 			"",
 			"localhost",
-			"Onion.db",
+			"/data/Onion.db",
 			"",
 			"",
 		}
