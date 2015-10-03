@@ -38,7 +38,7 @@ type {{.TypeName}}Service struct {
 }
 
 func (s *{{.TypeName}}Service) getDb(cfg Config) (gorm.DB, error) {
-	db, err := gorm.Open("sqlite3", "./"+cfg.DbName)
+	db, err := gorm.Open("sqlite3", cfg.DbName)
 	//db.LogMode(true)
 	return db, err
 }
