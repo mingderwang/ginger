@@ -59,6 +59,7 @@ func (s *{{.TypeName}}Service) Run(cfg Config) error {
 		return err
 	}
 	db.SingularTable(true)
+	db.AutoMigrate(&{{.TypeName}}{})
 
 	{{.VariableName}}Resource := &{{.TypeName}}Resource{db: db}
 
