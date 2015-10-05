@@ -54,12 +54,12 @@ func (s *{{.TypeName}}Service) Migrate(cfg Config) error {
 	return nil
 }
 func (s *{{.TypeName}}Service) Run(cfg Config) error {
-	db, err := s.getDb(cfg)
+	s.Migrate(cfg)
+        db, err := s.getDb(cfg)
 	if err != nil {
 		return err
 	}
 	db.SingularTable(true)
-	db.AutoMigrate(&{{.TypeName}}{})
 
 	{{.VariableName}}Resource := &{{.TypeName}}Resource{db: db}
 
