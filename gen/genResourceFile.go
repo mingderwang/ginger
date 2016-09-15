@@ -42,7 +42,7 @@ type {{.TypeName}}Resource struct {
 func (tr *{{.TypeName}}Resource) Create{{.TypeName}}(c *gin.Context) {
 	var {{.VariableName}} {{.TypeName}}
 
-	if c.Bind(&{{.VariableName}}) != nil {
+	if c.BindJSON(&{{.VariableName}}) != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "problem decoding body"})
 		return
 	}
@@ -87,7 +87,7 @@ func (tr *{{.TypeName}}Resource) Update{{.TypeName}}(c *gin.Context) {
 
 	var {{.VariableName}} {{.TypeName}}
 
-	if c.Bind(&{{.VariableName}}) != nil {
+	if c.BindJSON(&{{.VariableName}}) != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "problem decoding body"})
 		return
 	}
@@ -115,7 +115,7 @@ func (tr *{{.TypeName}}Resource) Patch{{.TypeName}}(c *gin.Context) {
 	// recovering from the panic and using my object that already has the json body bound to it.
 	var json []Patch
 
-	r := c.Bind(&json)
+	r := c.BindJSON(&json)
 	if r != nil {
 		fmt.Println(r)
 	} else {
